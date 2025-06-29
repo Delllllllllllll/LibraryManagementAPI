@@ -19,4 +19,13 @@ async function writeFile(data) {
   await fs.writeFile(dataPath, JSON.stringify(data, null, 2), "utf8");
 }
 
-module.exports = { readFile, writeFile };
+async function deleteBook(id) {
+  const books = await readFile();
+  const filtered = books.filter(book => book.id !== id);
+  
+  if(books.length === filtered.length) return { success: false};
+  await writeFile(filtered);
+  return { success: true };
+}
+
+module.exports = { readFile, writeFile, deleteBook };

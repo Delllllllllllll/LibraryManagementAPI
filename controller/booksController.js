@@ -1,4 +1,4 @@
-const { readFile, writeFile } = require("../utils/fileHandler.js");
+const { readFile, writeFile, deleteBook } = require("../utils/fileHandler.js");
 const { v4: uuid4 } = require("uuid");
 
 const getBooks = async (req, res, next) => {
@@ -30,4 +30,21 @@ const addBook = async (req, res, next) => {
     next(err);
   }
 };
-module.exports = { getBooks, addBook };
+
+const deleteBookId = async (req, res, next) => {
+  const id = req.params.id;
+  if(!id) return res.status(400).json({ message: 'Book ID is required' });
+
+  try {
+    const result = await deleteBook(id);
+    if(!result.success) {
+      return res.status(404).json({ message: `No book found with id ${id}`});
+    }
+    res.status(201).json({ message: `Item id: ${id} has been deleted successfully`});
+  } catch (err) {
+    console.error("Something went wrong: ", err);
+    next(err);
+  }
+};
+
+module.exports = { getBooks, addBook, deleteBookId };
