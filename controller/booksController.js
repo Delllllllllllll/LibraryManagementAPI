@@ -15,7 +15,7 @@ const addBook = async (req, res, next) => {
   let oldBooks = await readFile();
   try {
     const newBook = {
-      id: uuid4(), // Use a unique id instead of hardcoded 2
+      id: uuid4(), 
       title: req.body.title,
       author: req.body.author,
       genre: req.body.genre,
