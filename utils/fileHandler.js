@@ -27,5 +27,8 @@ async function deleteBook(id) {
   await writeFile(filtered);
   return { success: true };
 }
+//! const id = Object.keys(book)[0];
+
+
 
 module.exports = { readFile, writeFile, deleteBook };
