@@ -38,5 +38,13 @@
     "pwd": "samplepassword",
     "createdAt": "2025-07-01T11:21:37.197Z",
     "updatedAt": "2025-07-01T11:21:37.198Z"
+  },
+  {
+    "id": "fb319f68-0e6b-4b3c-98f2-3dbfdc2d7885",
+    "name": "Randell",
+    "email": "saasasasdasddasddmple@gmail.com",
+    "pwd": "asdAasdasd1",
+    "createdAt": "2025-07-01T14:19:20.954Z",
+    "updatedAt": "2025-07-01T14:19:20.954Z"
   }
 ]

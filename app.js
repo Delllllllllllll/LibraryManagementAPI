@@ -1,13 +1,14 @@
+require('dotenv').config();
 const express = require("express");
 const app = express();
-const booksRouter = require('./routes/books.js');
-const usersRouter = require('./routes/users.js');
-const errorHandler = require('./middleware/errorHandler.js');
+const booksRouter = require("./routes/books.js");
+const usersRouter = require("./routes/users.js");
+const errorHandler = require("./middleware/errorHandler.js");
 
 app.use(express.json());
 app.use("/api", booksRouter);
 app.use("/api", usersRouter);
-app.use(express.static('public'));
+app.use(express.static("public"));
 
 // 404 handler for unmatched routes
 app.use((req, res, next) => {
@@ -17,4 +18,4 @@ app.use((req, res, next) => {
 // Error handler (should be last)
 app.use(errorHandler);
 
-app.listen(3000);
+app.listen(process.env.PORT);

@@ -2,8 +2,7 @@ const path = require("path");
 const fs = require("fs").promises;
 
 // Define file paths
-const bookDir = path.join(__dirname, "..", "data");
-const dataPath = path.join(bookDir, "books.json");
+const dataPath = path.join(__dirname, process.env.BOOKS_DATA_PATH);
 
 const readFile = async () => {
   const booksData = await fs.readFile(dataPath, "utf-8");

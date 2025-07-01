@@ -35,8 +35,8 @@ Content-Type: application/json
 
 {
     "name": "Randell",
-    "email": "saasasasddasddmple@gmail.com",
-    "pwd": "samplepassword"
+    "email": "saasasasdasddasddmple@gmail.com",
+    "pwd": "asdAasdasd1"
 }
 
 ### Delete a User
