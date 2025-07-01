@@ -24,3 +24,21 @@ Content-Type: application/json
 {
     "title": "RANDELL BOOK"
 }
+
+
+### Get all Users
+GET http://localhost:3000/api/users HTTP/1.1
+
+### Create a new User
+POST http://localhost:3000/api/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Randell",
+    "email": "saasasasddasddmple@gmail.com",
+    "pwd": "samplepassword"
+}
+
+### Delete a User
+DELETE http://localhost:3000/api/users/8f7063da-ce7d-4f56-83cb-42ff60443b56 HTTP/1.1
+Content-Type: application/json

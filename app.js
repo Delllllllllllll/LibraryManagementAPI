@@ -1,10 +1,12 @@
 const express = require("express");
 const app = express();
-const router = require('./routes/books.js');
+const booksRouter = require('./routes/books.js');
+const usersRouter = require('./routes/users.js');
 const errorHandler = require('./middleware/errorHandler.js');
 
-app.use(express.json()); // Automatically turn a object request body into a JSON format 
-app.use("/api", router);
+app.use(express.json());
+app.use("/api", booksRouter);
+app.use("/api", usersRouter);
 app.use(express.static('public'));
 
 // 404 handler for unmatched routes

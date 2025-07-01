@@ -1,4 +1,3 @@
-const { read } = require("fs");
 const path = require("path");
 const fs = require("fs").promises;
 
@@ -28,7 +27,6 @@ async function deleteBook(id) {
   return { success: true };
 }
 //! const id = Object.keys(book)[0];
-
 
 
 module.exports = { readFile, writeFile, deleteBook };

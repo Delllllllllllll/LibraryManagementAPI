@@ -1,0 +1,42 @@
+[
+  {
+    "id": "7fe800a5-dca5-4864-ab46-068599f72bf1",
+    "name": "Randell",
+    "email": "sample@gmail.com",
+    "pwd": "samplepassword",
+    "createdAt": "2025-07-01T11:18:01.517Z",
+    "updatedAt": "2025-07-01T11:18:01.517Z"
+  },
+  {
+    "id": "834305f9-285a-4e44-9799-51d80e1c0fd4",
+    "name": "Randell",
+    "email": "saasdmple@gmail.com",
+    "pwd": "samplepassword",
+    "createdAt": "2025-07-01T11:21:28.468Z",
+    "updatedAt": "2025-07-01T11:21:28.469Z"
+  },
+  {
+    "id": "33ac0b7a-1336-4da8-a473-d929131e25e1",
+    "name": "Randell",
+    "email": "saasasddmple@gmail.com",
+    "pwd": "samplepassword",
+    "createdAt": "2025-07-01T11:21:32.289Z",
+    "updatedAt": "2025-07-01T11:21:32.290Z"
+  },
+  {
+    "id": "ba409102-f9a5-4f65-a144-17acf5fc64d1",
+    "name": "Randell",
+    "email": "saasasdasddmple@gmail.com",
+    "pwd": "samplepassword",
+    "createdAt": "2025-07-01T11:21:34.814Z",
+    "updatedAt": "2025-07-01T11:21:34.815Z"
+  },
+  {
+    "id": "7712cc2a-e0ba-4c63-8744-3ef7796a5b9b",
+    "name": "Randell",
+    "email": "saasasasddasddmple@gmail.com",
+    "pwd": "samplepassword",
+    "createdAt": "2025-07-01T11:21:37.197Z",
+    "updatedAt": "2025-07-01T11:21:37.198Z"
+  }
+]

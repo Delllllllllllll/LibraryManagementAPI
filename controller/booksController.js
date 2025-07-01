@@ -1,4 +1,4 @@
-const { readFile, writeFile, deleteBook } = require("../utils/fileHandler.js");
+const { readFile, writeFile, deleteBook } = require("../model/fileHandler.js");
 const { v4: uuid4 } = require("uuid");
 
 const getBooks = async (req, res, next) => {
