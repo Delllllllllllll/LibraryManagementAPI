@@ -9,19 +9,19 @@ const validateUser = [
     .matches(/^(?=.*[A-Z])(?=.*\d)/)
     .withMessage("Password must contains atleast one uppercase and one number"),
 ];
-
 const handleValidationErrors = (req, res, next) => {
-  const errors = validationResult(req);
-  if(!errors.isEmpty()) {
+  const errors = validationResult(req); // This will get the error if any validations failed
+  if (!errors.isEmpty()) {
     return res.status(400).json({
-        message: 'Validation Failed',
-        errors: errors.array()
-    })
+      message: "Validation Failed",
+      errors: errors.array(),
+    });
   }
+  //  If there are no errors in the validation then continue to the next middleware which is the RegisterNewUser
   next();
 };
 
-module.exports = { 
-  validateUser, 
-  handleValidationErrors 
+module.exports = {
+  validateUser,
+  handleValidationErrors,
 };

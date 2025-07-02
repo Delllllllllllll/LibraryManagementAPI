@@ -1,5 +1,4 @@
 const Users = require("../model/usersHandler.js");
-const bcrypt = require("bcrypt");
 
 const userModel = new Users();
 
@@ -27,7 +26,7 @@ const registerNewUser = async (req, res, next) => {
 const getUsers = async (req, res) => {
   const users = await userModel.getAllUser();
   if (users.length === 0)
-    return res.status(400).json({ message: "Users are empty" });
+    return res.status(200).json({ message: "Users are empty" });
 
   res.status(200).json(users);
 };
