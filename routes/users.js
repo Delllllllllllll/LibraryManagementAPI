@@ -5,10 +5,11 @@ const { registerNewUser,
         deleteUser } = require('../controller/usersController.js');
 const { validateUser, 
         handleValidationErrors } = require('../middleware/validators.js');
+const verifyAccess = require('../middleware/verify_access.js');
 
 usersRouter.route('/users')
-            .get(getUsers) 
-            .post(validateUser, handleValidationErrors, registerNewUser);
+            .get(verifyAccess, getUsers) 
+            .post(verifyAccess, validateUser, handleValidationErrors, registerNewUser);
 
 usersRouter.route('/users/:id') 
                 .delete(deleteUser);

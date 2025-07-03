@@ -35,10 +35,25 @@ Content-Type: application/json
 
 {
     "name": "Randell",
-    "email": "lingat@gmail.com",
-    "pwd": "ASDASDasdasd1"
+    "email": "dev@gmail.com",
+    "pwd": "Sample123"
 }
 
 ### Delete a User
-DELETE http://localhost:3000/api/users/8f7063da-ce7d-4f56-83cb-42ff60443b56 HTTP/1.1
+DELETE http://localhost:3000/api/users/8f7063da-ce7d-4f583cb-42ff60443b56 HTTP/1.1
 Content-Type: application/json
+
+
+### Authenticate a User
+POST http://localhost:3000/api/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "dev@gmail.com",
+    "pwd": "Sample123"
+}
+
+
+### Use the accessToken from the previous response
+GET http://localhost:3000/api/users HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQzMjhhNDkzLTVlZTAtNGFmMi1hZWVlLWVmMmE5M2ExOWMyNyIsIm5hbWUiOiJSYW5kZWxsIiwiZW1haWwiOiJkZXZAZ21haWwuY29tIiwiaWF0IjoxNzUxNTUxODMyLCJleHAiOjE3NTE1NTE4NjJ9.e83dfjyUajPAdiAEZklWJnvky1D9ie1MBeH2hWzytd4

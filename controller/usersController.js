@@ -1,5 +1,4 @@
 const Users = require("../model/usersHandler.js");
-
 const userModel = new Users();
 
 const registerNewUser = async (req, res, next) => {
@@ -36,13 +35,7 @@ const deleteUser = async (req, res, next) => {
 
   try {
     const result = await userModel.delete(id);
-
-    console.log(result.success);
-    if (!result.success)
-      return res
-        .status(400)
-        .json({ message: `User with id ${id} is not found` });
-
+    
     res
       .status(200)
       .json({ message: `User with id ${id} is deleted successfuly` });

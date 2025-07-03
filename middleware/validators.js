@@ -9,6 +9,11 @@ const validateUser = [
     .matches(/^(?=.*[A-Z])(?=.*\d)/)
     .withMessage("Password must contains atleast one uppercase and one number"),
 ];
+
+const validateAuth = [
+  body("email").isEmail().withMessage("Please enter a valid email address"),
+]
+
 const handleValidationErrors = (req, res, next) => {
   const errors = validationResult(req); // This will get the error if any validations failed
   if (!errors.isEmpty()) {
@@ -23,5 +28,6 @@ const handleValidationErrors = (req, res, next) => {
 
 module.exports = {
   validateUser,
+  validateAuth,
   handleValidationErrors,
 };

@@ -6,28 +6,28 @@ const bcrypt = require("bcrypt");
 class Users {
   constructor() {
     this.usersPath = path.join(__dirname, process.env.USERS_DATA_PATH);
-    this.cacheUsers = null, 
-    this.lastModified = null 
+    (this.cacheUsers = null), (this.lastModified = null);
   }
 
   async loadUsers() {
     try {
-      const stats = await fs.stat(this.usersPath); 
-      console.log(`This is the cache: `, this.cacheUsers);
+      const stats = await fs.stat(this.usersPath);
+
       // If the there is cache meaning it's not null
       // And if the lastModified >= lastMofiedTime then meaning we can use the old one
-      if(this.cacheUsers && this.lastModified >= stats.mtime){
-        return this.cacheUsers; 
+      if (this.cacheUsers && this.lastModified >= stats.mtime) {
+        return this.cacheUsers;
       }
-      
-      // If there is no cache yet 
+
+      // If there is no cache yet
       const users = await fs.readFile(this.usersPath, "utf-8");
       this.cacheUsers = JSON.parse(users);
       this.lastModified = stats.mtime;
 
       return JSON.parse(users);
     } catch (err) {
-      if (err.code === "ENOENT") { // This means if the file is missing just return []
+      if (err.code === "ENOENT") {
+        // This means if the file is missing just return []
         return [];
       }
       throw err;
@@ -35,9 +35,9 @@ class Users {
   }
 
   async saveUser(users) {
-    try{
+    try {
       await fs.writeFile(this.usersPath, JSON.stringify(users, null, 2));
-    }catch(err) {
+    } catch (err) {
       throw new Error(`Failed to save users to ${this.usersPath}`);
     }
   }
@@ -57,39 +57,57 @@ class Users {
     const saltRounds = 10; // Higher = secure but slower
     const hashedPassword = await bcrypt.hash(userData.pwd, saltRounds);
 
-        const newUser = {
-            id: uuidv4(),
-            name: userData.name,
-            email: userData.email,
-            pwd: hashedPassword,
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString(),
-        };
+    const newUser = {
+      id: uuidv4(),
+      name: userData.name,
+      email: userData.email,
+      pwd: hashedPassword,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
 
-        users.push(newUser);
-        // When this function failed it will propagate the error to the error handler
-        await this.saveUser(users); // since this one is already throwing error then we don't need try/catch 
+    users.push(newUser);
+    // When this function failed it will propagate the error to the error handler
+    await this.saveUser(users); // since this one is already throwing error then we don't need try/catch
 
-        return newUser;
+    return newUser;
+  }
+
+  async authenticateUser(userData) {
+    const { email, pwd } = userData;
+    const user = await this.findUserByEmail(email);
+
+    if (!user) throw new Error(`Invalid credentials`);
+
+    const isMatch = await bcrypt.compare(pwd, user.pwd);
+
+    if (!isMatch) throw new Error(`Invalid credentials`);
+    
+    // if it's matching  return the password
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+    };
   }
 
   async delete(id) {
     const users = await this.loadUsers();
-    const userIndex = users.findIndex(user => user.id ===  id);
-    
-    if(userIndex === -1) throw new Error('User not found');
+    const userIndex = users.findIndex((user) => user.id === id);
+
+    if (userIndex === -1) throw new Error("User not found");
 
     // Splice: The first parameter is where to start cutting inclusive
     // Splice: The second parameter is the number to cut and it will start on the first paramter index
-    users.splice(userIndex, 1); 
+    users.splice(userIndex, 1);
     await this.saveUser(users); // This will throw an error when it fails so no neeed for try/catch
 
-    return { success: true};
+    return { success: true };
   }
 
-  async getAllUser(){
+  async getAllUser() {
     return await this.loadUsers();
-  } 
-};
+  }
+}
 
-module.exports = Users; 
+module.exports = Users;
