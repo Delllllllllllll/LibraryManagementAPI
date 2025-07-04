@@ -32,10 +32,10 @@ GET http://localhost:3000/api/users HTTP/1.1
 ### Create a new User
 POST http://localhost:3000/api/users HTTP/1.1
 Content-Type: application/json
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQzMjhhNDkzLTVlZTAtNGFmMi1hZWVlLWVmMmE5M2ExOWMyNyIsIm5hbWUiOiJSYW5kZWxsIiwiZW1haWwiOiJkZXZAZ21haWwuY29tIiwiaWF0IjoxNzUxNTkxMjI2LCJleHAiOjE3NTE1OTEyNTZ9.GRaoAg1A4aOsqr2UUjGcGS2WQh1z4_faHHlW7te0TC8
 {
     "name": "Randell",
-    "email": "dev@gmail.com",
+    "email": "dev1@gmail.com",
     "pwd": "Sample123"
 }
 
@@ -56,4 +56,4 @@ Content-Type: application/json
 
 ### Use the accessToken from the previous response
 GET http://localhost:3000/api/users HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQzMjhhNDkzLTVlZTAtNGFmMi1hZWVlLWVmMmE5M2ExOWMyNyIsIm5hbWUiOiJSYW5kZWxsIiwiZW1haWwiOiJkZXZAZ21haWwuY29tIiwiaWF0IjoxNzUxNTUxODMyLCJleHAiOjE3NTE1NTE4NjJ9.e83dfjyUajPAdiAEZklWJnvky1D9ie1MBeH2hWzytd4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQzMjhhNDkzLTVlZTAtNGFmMi1hZWVlLWVmMmE5M2ExOWMyNyIsIm5hbWUiOiJSYW5kZWxsIiwiZW1haWwiOiJkZXZAZ21haWwuY29tIiwiaWF0IjoxNzUxNTkzOTUzLCJleHAiOjE3NTE1OTUxNTN9.cQcFecGdezgF_ah3viYdgSdoRIEbMpngtcvb19aGp7M

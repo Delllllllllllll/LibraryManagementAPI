@@ -16,7 +16,7 @@ const authenticate = async (req, res, next) => {
     
     const payload = { id: user.id, name: user.name, email: user.email };
 
-    const accessToken = generateToken(payload, process.env.ACCESS_TOKEN_SECRET, "30s");
+    const accessToken = generateToken(payload, process.env.ACCESS_TOKEN_SECRET, "20m");
     const refreshToken = generateToken(payload, process.env.REFRESH_TOKEN_SECRET, "24h");
     // This sends a cookie to the browser and then it will automatically store it. And the browser will send the cookie back for every subsequent request
     res.cookie("refreshToken", refreshToken, {
